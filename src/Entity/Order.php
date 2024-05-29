@@ -67,14 +67,6 @@ class Order
     }
 
     /**
-     * @param Product[] $products
-     */
-    public function setProducts(array $products): void
-    {
-        $this->products = $products;
-    }
-
-    /**
      * @return array<string,mixed>
      */
     public function toArray(): array

@@ -10,7 +10,6 @@ use Symfony\Component\Routing\Attribute\Route;
 class OrderController extends AbstractController
 {
     public function __construct(private OrderService $orderService) {
-
     }
     #[Route('/{id}', methods: ['GET'])]
     public function getOrder(int $id): JsonResponse

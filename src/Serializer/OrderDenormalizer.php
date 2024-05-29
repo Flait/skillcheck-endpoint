@@ -6,7 +6,7 @@ use App\Entity\Product;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 
-class OrderDenormalizer implements DenormalizerInterface
+final class OrderDenormalizer implements DenormalizerInterface
 {
     /**
      * @param mixed[] $context

@@ -2,6 +2,8 @@
 
 Tested on windows
 
-docker-compose up --build to bring the project up
+To run the project under http://localhost/
+1. composer install
+2. docker-compose up --build 
 
-STAN: vendor/bin/phpstan analyse -l max src
+check makefile for more commands

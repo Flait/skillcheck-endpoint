@@ -2,6 +2,8 @@
 
 namespace App\Client;
 
+use PHPUnit\Logging\Exception;
+
 class FakeClient
 {
     private const ORDERS = [
@@ -36,6 +38,6 @@ class FakeClient
     function getOrderDataById(int $id): ?array
     {
         $index = array_search($id, array_column(self::ORDERS, 'id'));
-        return $index !== false ? self::ORDERS[$index] : null;
+        return $index !== false ? self::ORDERS[$index] : throw new Exception('Order is missing in the datasource');
     }
 }

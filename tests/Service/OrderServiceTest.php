@@ -12,10 +12,14 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 #[CoversClass(OrderService::class)]
 final class OrderServiceTest extends TestCase
 {
+    private FakeClient $fakeClient;
+    private DenormalizerInterface $serializer;
     private OrderService $orderService;
 
     protected function setUp(): void
     {
+        $this->fakeClient = $this->createMock(FakeClient::class);
+        $this->serializer = $this->createMock(DenormalizerInterface::class);
         $this->orderService = new OrderService($this->fakeClient, $this->serializer);
     }
 
@@ -24,13 +28,13 @@ final class OrderServiceTest extends TestCase
         $orderId = 1;
         $orderData = ['id' => $orderId, 'name' => 'Test Order'];
 
-        $this->createMock(FakeClient::class)->expects($this->once())
+        $this->fakeClient->expects($this->once()) //@phpstan-ignore method.notFound
             ->method('getOrderDataById')
             ->with($orderId)
             ->willReturn($orderData);
 
         $order = $this->createMock(Order::class);
-        $this->createMock(DenormalizerInterface::class)->expects($this->once())
+        $this->serializer->expects($this->once()) //@phpstan-ignore method.notFound
             ->method('denormalize')
             ->with($orderData, Order::class)
             ->willReturn($order);
@@ -46,12 +50,12 @@ final class OrderServiceTest extends TestCase
         $orderId = 1;
         $orderData = ['id' => $orderId, 'name' => 'Test Order'];
 
-        $this->createMock(FakeClient::class)->expects($this->once())
+        $this->fakeClient->expects($this->once()) //@phpstan-ignore method.notFound
             ->method('getOrderDataById')
             ->with($orderId)
             ->willReturn($orderData);
 
-        $this->createMock(DenormalizerInterface::class)->expects($this->once())
+        $this->serializer->expects($this->once()) //@phpstan-ignore method.notFound
             ->method('denormalize')
             ->with($orderData, Order::class)
             ->willReturn(null);

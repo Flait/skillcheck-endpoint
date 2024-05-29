@@ -7,4 +7,12 @@ coverage:
 unit:
 	docker container exec skillcheck-endpoint-w-php-1 ./vendor/bin/phpunit tests
 
+startup:
+	composer install
+	docker-compose up --build -d
 
+up:
+	docker-compose up
+
+down:
+	docker-compose stop

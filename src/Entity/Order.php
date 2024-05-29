@@ -4,13 +4,17 @@ namespace App\Entity;
 
 class Order
 {
+    /**
+     * @param Product[] $products
+     */
     public function __construct(
         readonly public int $id,
         private \DateTimeInterface $createdAt,
         private string $name,
         private int $amount,
         private string $currency,
-        private string $status
+        private string $status,
+        private array $products,
     ) {
     }
 
@@ -52,6 +56,22 @@ class Order
     public function getStatus(): string
     {
         return $this->status;
+    }
+
+    /**
+     * @return Product[]
+     */
+    public function getProducts(): array
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param Product[] $products
+     */
+    public function setProducts(array $products): void
+    {
+        $this->products = $products;
     }
 
 

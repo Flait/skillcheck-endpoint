@@ -12,4 +12,16 @@ readonly class Product
     )
     {
     }
+
+    /**
+     * @return array<string,int|string>
+     */
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'price' => $this->price,
+        ];
+    }
 }

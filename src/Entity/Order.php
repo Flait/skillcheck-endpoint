@@ -74,6 +74,22 @@ class Order
         $this->products = $products;
     }
 
-
+    /**
+     * @return array<string,mixed>
+     */
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'createdAt' => $this->createdAt->format('c'), // ISO 8601 format
+            'name' => $this->name,
+            'amount' => $this->amount,
+            'currency' => $this->currency,
+            'status' => $this->status,
+            'products' => array_map(function(Product $product) {
+                return $product->toArray();
+            }, $this->products),
+        ];
+    }
 }
 

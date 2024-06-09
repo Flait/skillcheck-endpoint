@@ -1,5 +1,5 @@
 # skillcheck-endpoint
-
+This is skill check based task for some company.
 Tested on windows
 
 To run the project under http://localhost/
